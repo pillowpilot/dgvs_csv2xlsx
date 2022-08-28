@@ -1,4 +1,7 @@
 <?php
+/*
+ * This namespace contains the main logic behind csv2xlsx
+ */
 
 namespace splitter;
 
@@ -63,6 +66,17 @@ class Splitter
         echo "Sheet closed.\n";
     }
 
+    /*
+     * Main function. Generates enough XLSX sheet files from the data provided.
+     * 
+     * Parameters:
+     * $csv_stream: stream from which the csv is read (use fopen(...))
+     * $output_dir: string with the path of the output directory (must exists)
+     * $max_rows_per_sheet: number of rows per sheet
+     * 
+     * Return:
+     * The number of sheets created.
+     */
     public function splitCSVIntoSheetFiles($csv_stream, $output_dir, $max_rows_per_sheet)
     {
         $sheet_file_handle = $this->open_new_sheet_stream($output_dir);

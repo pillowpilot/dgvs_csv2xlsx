@@ -1,9 +1,16 @@
 <?php
 
+/*
+ * This namespace contains all the logic to modify the XLSX file metadata.
+ */
+
 namespace header;
 
 class XlsxHeader
 {
+    /*
+     * Updates [Content_Types].xml
+     */
     public static function updateContentTypes($output_dir, $number_of_sheets)
     {
         $to_inject = "";
@@ -18,6 +25,9 @@ class XlsxHeader
         file_put_contents("{$output_dir}[Content_Types].xml", $content_types_content);
     }
 
+    /*
+     * Updates xl/_rels/workbook.xml.rels and xl/workbook.xml
+     */
     public static function updateRelationshipsAndWorkbookFiles($output_dir, $number_of_sheets)
     {
         $initial_id = 3;

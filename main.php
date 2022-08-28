@@ -7,10 +7,10 @@ require_once('xlsxHeader.php');
 use \utils\Utils;
 use \header\XlsxHeader;
 
-$csv_stream = fopen('5m_sales.csv', 'r');
+$csv_stream = fopen('csv_examples/5m_sales.csv', 'r');
 stream_set_read_buffer($csv_stream, 1024*50); // default = 4096 bytes
 
-Utils::copy_directory("util/minimalXlsx/", "outputDir/");
+Utils::copy_directory("util/minimalXlsx/", "outputDir/"); // outputDir must exists (TODO fix this)
 
 $splitter = new splitter\Splitter();
 $number_of_sheets = $splitter->splitCSVIntoSheetFiles($csv_stream, "outputDir/minimalXlsx/xl/worksheets/", 1000*1000);

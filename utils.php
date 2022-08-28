@@ -1,12 +1,19 @@
 <?php
 
+/*
+ * This namespace separates utilities functions from the main logic.
+ */
+
 namespace utils;
 
 require_once('pclzip.lib.php');
 
 class Utils
 {
-    // https://github.com/PHPOffice/PHPExcel/blob/1.8/Classes/PHPExcel/Cell.php#L833
+    /*
+     * Compute the string corresponding to the column index (0-based).
+     * Originally from: https://github.com/PHPOffice/PHPExcel/blob/1.8/Classes/PHPExcel/Cell.php#L833
+     */
     public static function stringFromColumnIndex($pColumnIndex = 0)
     {
         //    Using a lookup cache adds a slight memory overhead, but boosts speed
@@ -30,7 +37,10 @@ class Utils
         return $_indexCache[$pColumnIndex];
     }
 
-    // bilgisayarcilik/Remote-File-Manager
+    /*
+     * Recursively copy a directory.
+     * Originally from: bilgisayarcilik/Remote-File-Manager
+     */
     public static function copy_directory($directory, $destination)
     {
         $destination = $destination . basename($directory);
@@ -63,6 +73,9 @@ class Utils
         return true;
     }
 
+    /*
+     * Compress a directory into a zip file. Using the pclzip library.
+     */
     public static function zip_directory($directory, $zip_destination)
     {
         echo "Creating zip archive {$zip_destination}... ";
